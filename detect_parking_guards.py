@@ -8,7 +8,7 @@ parking_ssid_probe = ["Qpark G4S", "Qpark pms_5G"]
 ssid_probe_file = "parking_ssid_probe.txt"
 
 def handle_probe_request(pkt):
-    global parking_ssid_probe  # Add this line to use the global variable inside the function
+    global parking_ssid_probe
     if pkt.haslayer(Dot11):
         if pkt.type == 0 and pkt.subtype == 4 and (pkt.addr2 in parking_guys or pkt.info.decode() in parking_ssid_probe):
             current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
